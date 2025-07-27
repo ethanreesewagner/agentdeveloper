@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutiger Aero Social Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            width: 500px;
+        }
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+        }
+        h1, h2 {
+            color: #002147;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frutiger Aero Social Media App</h1>
+        <h2>Create a Post</h2>
+        <form action="/create" method="POST">
+            <input type="text" name="title" placeholder="Post title" required><br>
+            <textarea name="content" placeholder="Post content" required></textarea><br>
+            <input type="url" name="video_url" placeholder="Video URL" required><br>
+            <button class="btn" type="submit">Add Post</button>
+        </form>
+
+        <h2>All Posts</h2>
+        {% for post in posts %}
+        <div class="post">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+            <iframe width="100%" height="315" src="{{ post.video_url }}" frameborder="0" allowfullscreen></iframe>
+            <form action="/delete/{{ post.id }}" method="POST" style="display: inline;">
+                <button class="btn" type="submit" style="background-color: red;">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

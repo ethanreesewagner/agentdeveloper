@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutiger Aero Social Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 10px;
+        }
+        .post {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            padding: 15px;
+        }
+        .post-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .post-content {
+            font-size: 1.1em;
+        }
+        .post video {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Frutiger Aero Social Media</h1>
+    {% for post in posts %}
+    <div class="post">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-content">{{ post.content }}</div>
+        <iframe width="560" height="315" src="{{ post.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    {% endfor %}
+</body>
+</html>
